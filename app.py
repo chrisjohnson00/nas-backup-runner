@@ -12,9 +12,10 @@ def main():
     ]
     for rsync in rsyncs:
         logging.info(f"Running: {rsync}")
-        subprocess_completed = subprocess.run(rsync, check=True, capture_output=True, text=True)
+        subprocess_completed = subprocess.run(rsync, check=True, capture_output=True, text=True, shell=True)
         logging.info(f"{subprocess_completed.stdout}")
-        logging.error(f"{subprocess_completed.stderr}")
+        if subprocess_completed.stderr:
+            logging.error(f"{subprocess_completed.stderr}")
         logging.info(f"Completed: {rsync}")
 
 

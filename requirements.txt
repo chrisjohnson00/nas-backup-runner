@@ -1,0 +1,4 @@
+aiokafka==0.7.1
+kafka-python==2.0.2
+kme==0.1.1
+python-consul==1.1.0

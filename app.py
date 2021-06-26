@@ -6,7 +6,6 @@ from configurator.utility import get_config
 
 
 async def run_rsyncs():
-    await asyncio.sleep(1)
     rsyncs = [
         'rsync -a --progress /data/files/ chris@192.168.1.132:/data/files/',
         'rsync -ar --ignore-errors --progress --delete-before /data/video/ chris@192.168.1.132:/data/video/',
@@ -21,6 +20,7 @@ async def run_rsyncs():
         if subprocess_completed.stderr:
             logging.error(f"{subprocess_completed.stderr}")
         logging.info(f"Completed: {rsync}")
+        await asyncio.sleep(1)
 
 
 async def consume():
